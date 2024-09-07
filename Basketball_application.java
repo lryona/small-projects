@@ -1,10 +1,9 @@
-package basketball_application;
-
+package sport_application;
 import java.util.Scanner;
 
-public class Basketball_application {
-    
-    public static void main(String[] args) {
+public class Sport_application {
+
+public static void main(String[] args) {
         
         Scanner scanner = new Scanner(System.in);
         
@@ -18,15 +17,18 @@ public class Basketball_application {
         int applicant_count = 0;
     
         while(true) {
+            System.out.println("-----------------------------------");
             System.out.println("Menu");
-            System.out.println("-----------------");
+            System.out.println("-----------------------------------");
             System.out.println("[1] Place requirements");
             System.out.println("[2] Apply for the team");
-            System.out.println("[3] Exit");
-            System.out.println("-----------------");
+            System.out.println("[3] Show successful applicants");
+            System.out.println("[4] Exit");
+            System.out.println("-----------------------------------");
             System.out.println("Pick a choice:");
             
             choice = scanner.nextInt();
+            System.out.println("-----------------------------------");
             
             scanner.nextLine();
             
@@ -35,18 +37,17 @@ public class Basketball_application {
                     if(open_slots != 0 && min_age != 0 && max_age != 0) {
                         System.out.println("You are not allowed to change requirement. Exit the system to restart.");
                     } else {
-                        System.out.println("Enter number of open slot/s");
+                        System.out.println("Enter number of open slot/s:");
                         open_slots = scanner.nextInt();
                         applicants = new String[open_slots];
                     
-                        System.out.println("Enter minimum age");
+                        System.out.println("Enter minimum age:");
                         min_age = scanner.nextInt();
-                        System.out.println("Enter maximum age");
+                        System.out.println("Enter maximum age:");
                         max_age = scanner.nextInt();
                     }
                 break;
-                case 2:
-                    
+                case 2: 
                     if(open_slots != 0 && min_age != 0 && max_age != 0) {
                         System.out.println("Enter the applicant's name:");
                         name = scanner.nextLine();
@@ -69,11 +70,17 @@ public class Basketball_application {
                     }
                 break;
                 case 3:
-                    for(int i = 0; i < applicant_count; i++) {
+                    if(applicant_count != 0) {
                         System.out.println("Successful applicants:");
-                        System.out.println(applicants[i]);
-                    }
-                    
+                        
+                        for(int i = 0; i < applicant_count; i++) {
+                            System.out.println(applicants[i]);
+                        }
+                    } else {
+                        System.out.println("There are no successful applicants.");
+                    }        
+                break;
+                case 4:
                     scanner.close();
                     System.exit(0);
                 break;
